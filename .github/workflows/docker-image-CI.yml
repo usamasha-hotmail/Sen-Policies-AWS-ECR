@@ -15,9 +15,26 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-1
+
     - name: Compliling the Code
       run: echo "Compilation process started"
 
     - name: Unit testing the Code
       run: echo "Unit testing Completed"
    
+    - name: Code Analysis
+      run: echo "Code Analysis (Lint, code scan SAST, SCA scan)"
+
+#    - name: Publish Artifact
+#      run: echo "Publish Artifact"
+
+#    - name: Integration test
+#      run: echo "Integration test"
+
+#    - name: Deploy artifacts
+#      run: echo "Deploy artifacts (Dev, Staging and then Prod)"
